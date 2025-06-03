@@ -95,9 +95,9 @@ def main():
     is_member = pr_author.lower() in nvidia_members
     print(f"User '{pr_author}' is a member of NVIDIA: {is_member}")
 
-    if not is_member:
+    if is_member:
         print(
-            f"User '{pr_author}' is a community user. Adding label '{community_label}'."
+            f"User '{pr_author}' is not a community user. Adding label '{community_label}'."
         )
         add_label_to_pr(repo_name, pr_number, community_label)
     else:
