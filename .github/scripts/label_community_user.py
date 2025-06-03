@@ -63,8 +63,16 @@ def add_label_to_pr(repo_name: str, pr_number: str, label: str):
     """Adds a label to a pull request."""
     url = f"{GITHUB_API_URL}/repos/NVIDIA/{repo_name}/issues/{pr_number}/labels"
     payload = {"labels": [label]}
+    print(f"Attempting to add label. URL: {url}, Payload: {payload}")
     try:
         response = requests.post(url, headers=HEADERS, json=payload)
+        print(f"API Response Status Code: {response.status_code}")
+        try:
+            response_json = response.json()
+            print(f"API Response JSON: {response_json}")
+        except requests.exceptions.JSONDecodeError:
+            print(f"API Response Text (not JSON): {response.text}")
+
         response.raise_for_status()
         print(f"Successfully added label '{label}' to PR #{pr_number}.")
     except requests.exceptions.RequestException as e:
