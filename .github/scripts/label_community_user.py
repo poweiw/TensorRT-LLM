@@ -4,7 +4,7 @@ import time
 import requests
 
 GITHUB_API_URL = "https://api.github.com"
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+GITHUB_TOKEN = os.environ.get("MY_GITHUB_TOKEN")
 assert GITHUB_TOKEN, "GITHUB_TOKEN environment variable not set"
 
 HEADERS = {
