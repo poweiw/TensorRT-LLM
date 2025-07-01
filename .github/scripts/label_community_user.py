@@ -145,6 +145,8 @@ def main():
     else:
         print(
             f"User '{pr_author}' is an NVIDIA member. No label will be added.")
+        print("Intentionally failing the pipeline:")
+        sys.exit(100)
 
 
 if __name__ == "__main__":
